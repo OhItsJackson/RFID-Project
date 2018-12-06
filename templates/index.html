@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Class Attendance</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>Class Attendance</h1>
+  <!-- [START gae_python37_datastore_print_times] -->
+  <h2>Student List</h2>
+  {% for scan in scans %}
+    {% if 100 > F[1] %}
+      <p style="color:red">{{ scan['timestamp'] }} : {{ scan['username'] }} : {{ scan['readerId'] }} : {{scan['realnames']}}</p>
+    {% elif 100 > F[0] %}
+      <p style="color:blue">{{ scan['timestamp'] }} : {{ scan['username'] }} : {{ scan['readerId'] }} : {{scan['realnames']}}</p>
+    {% elif 100 <= F[0] and scan['timestamp'].minute <= F[1] %}
+      <p>{{ scan['timestamp'] }}: {{ scan['username'] }} : {{ scan['readerId'] }} : {{scan['realnames']}}</p>
+    {% endif %}
+  {% endfor %}
+  <!-- [END gae_python37_datastore_print_times] -->
+</body>
+</html>      
